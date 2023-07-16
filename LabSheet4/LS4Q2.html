@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            LabSheet4
+        </title>
+    </head>
+    <body>
+        <script>
+            class Rectangle
+            {
+                constructor(w, h)
+                {
+                    this.width = w;
+                    this.height = h;
+                }
+
+                getArea()
+                {
+                    return (this.width*this.height);
+                }
+            }
+
+            const Rec1 = new Rectangle(5,8);
+            const Rec2 = new Rectangle(12,20)
+
+            console.log(`The area of the rectangle 1 is ${Rec1.getArea()}`)
+            console.log(`The area of the rectangle 2 is ${Rec2.getArea()}`)
+        </script>
+    </body>
+</html>

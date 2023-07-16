@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            LabSheet4
+        </title>
+    </head>
+    <body>
+        <script>
+            class Employee
+            {
+                constructor(EmpNum, Name, Address, Contact, NIC, Designation, Salary)
+                { 
+                    this.empNum = EmpNum;
+                    this.name = Name;
+                    this.address = Address;
+                    this.contact = Contact;
+                    this.nic = NIC;
+                    this.jDate = new Date;
+                    this.designation = Designation;
+                    this.salary = Salary;
+                }
+
+                ArrivedAt()
+                {
+                    const d = new Date;
+                    return (`Employee ${this.name} having employee ID ${this.empNum} arrived at: ${d.toTimeString()}`);
+                }
+
+                LeftAt()
+                {
+                    const d = new Date;
+                    return (`Employee ${this.name} having employee ID ${this.empNum} left at: ${d.toTimeString()}`);
+                }
+
+                LunchPref(Pref)
+                {
+                    return (`${this.name} prefer ${Pref} for Lunch`);
+                }
+
+                ReqLeave(date, NoOfDays, Reason)
+                {
+                    const d = new Date(date);
+                    return (`${this.name} request leave on ${d.toDateString()} for ${NoOfDays} days due to the below mentioned reason` + "<br>" + `Reason: ${Reason}`);
+                }
+            }
+
+            class PermanentEmp extends Employee
+            {
+                constructor(EmpNum, Name, Address, Contact, NIC, Designation, Salary, EmpType)
+                {
+                    super(EmpNum, Name, Address, Contact, NIC, Designation, Salary);
+                    this.empType = EmpType;
+                }
+
+            }
+
+            class ContractEmp extends Employee
+            {
+                constructor(EmpNum, Name, Address, Contact, NIC, Designation, Salary, EmpType)
+                {
+                    super(EmpNum, Name, Address, Contact, NIC, Designation, Salary);
+                    this.empType = EmpType;
+                }
+                
+                Duration()
+                {
+                    const endDate = new Date(this.jDate);
+                    endDate.setFullYear(endDate.getFullYear() + 1);
+                    return endDate;
+                }
+
+                DutyExtension()
+                {
+                    const exReq = new Date(this.jDate);
+                    exReq.setMonth(exReq.getMonth() + 3);
+                    const today = new Date()
+                    
+                    if (today > exReq)
+                    {
+                        return ("Extension will be considered")
+                    }
+
+                    else 
+                    {
+                        return ("Extension cannot  be considered")
+                    }
+                }
+
+            }
+
+           class TempEmp extends Employee
+            {
+                constructor(EmpNum, Name, Address, Contact, NIC, Designation, Salary, EmpType)
+                {
+                    super(EmpNum, Name, Address, Contact, NIC, Designation, Salary);
+                    this.empType = EmpType;
+                }     
+                
+                Duration()
+                {
+                    const endDate = new Date(this.jDate);
+                    endDate.setMonth(endDate.getMonth() + 6);
+                    return endDate;
+                }
+
+                DutyExtension()
+                {
+                    const exReq = new Date(this.jDate);
+                    exReq.setMonth(exReq.getMonth() + 3);
+                    const today = new Date("2023-11-16")//date is set such that if clause will be executed
+                    
+                    if (today > exReq)
+                    {
+                        return ("Extension will be considered")
+                    }
+
+                    else 
+                    {
+                        return ("Extension cannot  be considered")
+                    }
+
+                }
+            }
+
+            const Emp1 = new Employee("E001", "John", "Nugegoda", "+94 704567882", "200122930293", "Manager", 150000);
+            const Emp2 = new ContractEmp("E002", "Ann", "Balangoda", "+94 712378332", "200062242873", "Associate SE", 75000, "Contract");
+            const Emp3 = new TempEmp("E003", "Will", "Angoda", "+94 762305982", "199962340373", "Trainee SE", 45000, "Temporary");
+           document.write(`${Emp1.empNum} , ${Emp1.name}, ${Emp1.address}, ${Emp1.contact}, ${Emp1.nic}, ${Emp1.jDate},
+           ${Emp1.designation}, ${Emp1.salary}` + "<br><br>");
+           document.write(Emp1.ArrivedAt() + "<br><br>");
+           document.write(Emp1.LeftAt()+ "<br><br>");
+           document.write(Emp1.LunchPref("Chicken") + "<br><br>");
+           document.write(Emp1.ReqLeave("2023-7-18", 3, "Sister's wedding<br><br>"))
+
+           document.write("Duration for " + Emp2.name + " is " + Emp2.Duration() + "<br><br>")
+
+           document.write(Emp2.DutyExtension() + "<br><br>")
+
+          document.write("Duration for " + Emp3.name + " is " + Emp3.Duration() + "<br><br>");
+
+          document.write(Emp3.DutyExtension() + "<br><br>")
+
+        
+        </script>
+    </body>
+</html>
