@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Labsheet5</title>
+	</head>
+	<body>
+		<p id = "demo1"></p>
+		<p id = "demo2"></p>
+		<script>
+			class Student
+			{
+				constructor(Index, Name, DOB, Address, ConNum, Email)
+				{
+					this.indexNo = Index;
+					this.name = Name;
+					this.dob = DOB;
+					this.address = Address;
+					this.contact = ConNum;
+					this.email = Email;
+				}
+				
+				#StudentDetails()
+				{
+					return ("Index Number: " + this.indexNo + "<br>Student Name: " + this.name +
+					"<br>Date of Birth: " + this.dob + "<br>Address: " + this.address + 
+					"<br>Contact Number: " + this.contact + "<br>Email: " + this.email);
+				}
+				
+				PrintStuDetails()
+				{
+					document.getElementById("demo1").innerHTML = this.#StudentDetails();
+				}
+				
+				#SetGroupNum()
+				{
+					return (this.indexNo%4);
+				}
+				
+				PrintGroupNum()
+				{
+					document.getElementById("demo2").innerHTML = "Student Group Number: " + this.#SetGroupNum();
+				}				
+			}
+			
+			const stu1 = new Student(21000121, "RASD Bandara", "2001.08.16", "Balangoda", 
+			"071 8293719", "sbandara@gmail.com")
+			stu1.PrintStuDetails();
+			stu1.PrintGroupNum();
+			
+		</script>
+	</body>
+</html>

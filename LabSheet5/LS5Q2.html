@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Labsheet5</title>
+</head>
+<body>
+<script>
+	class Solids
+	{
+		constructor()
+		{
+			if (this.constructor==Solids)
+            {
+                throw new Error("Abstract classes can't be initiated");
+            }
+		}
+
+        SurfaceArea()
+        {
+            throw new Error("Absract method \"SurfaceArea()\" called");
+        }
+
+        Volume()
+        {
+            throw new Error("Absract method \"Volume()\" called");
+        }
+    }
+
+    class Cube extends Solids
+	{
+		constructor(Length)
+		{
+            super();
+			this.length = Length;
+		}
+
+        SurfaceArea()
+        {
+            return 6 * this.length * this.length;
+        }
+
+        Volume()
+        {
+            return this.length * this.length * this.length;
+        }
+    }
+
+    class Cuboid extends Solids
+	{
+		constructor(Length, Breadth, Height)
+		{
+            super();
+			this.l = Length;
+            this.b = Breadth;
+            this.h = Height;
+		}
+
+        SurfaceArea()
+        {
+            return (2*this.l*this.h) + (2*this.h*this.b) + (2*this.b*this.l);
+        }
+
+        Volume()
+        {
+            return this.l * this.b * this.h;
+        }
+    }
+
+    class Cylinder extends Solids
+	{
+		constructor(Height, Radius)
+		{
+            super();
+            this.h = Height;
+            this.r = Radius;
+		}
+
+        SurfaceArea()
+        {
+            return (2*Math.PI*this.r*this.r) + (2*Math.PI*this.r*this.h);
+        }
+
+        Volume()
+        {
+            return Math.PI * this.r * this.r * this.h;
+        }
+    }
+
+    class Sphere extends Solids
+	{
+		constructor(Radius)
+		{
+            super();
+            this.r = Radius;
+		}
+
+        SurfaceArea()
+        {
+            return (4*Math.PI*this.r*this.r);
+        }
+
+        Volume()
+        {
+            return (4/3) * Math.PI * this.r * this.r * this.r;
+        }
+    }
+
+    class Cone extends Solids
+	{
+		constructor(Radius, Height)
+		{
+            super();
+            this.r = Radius;
+            this.h = Height;
+		}
+
+        SurfaceArea()
+        {
+            slantHeight = Math.sqrt((this.h*this.h) + (this.r*this.r));
+            return (Math.PI*this.r*(this.r + slantHeight));
+        }
+
+        Volume()
+        {
+            return (1/3) * Math.PI * this.r * this.r * this.h;
+        }
+    }
+  //const S1 = new Solids;
+    const S2 = new Cube(2);
+    const S3 = new Cuboid(4, 3, 2);
+    const S4 = new Cylinder(4, 7);
+    const S5 = new Sphere(4);
+    const S6 = new Cone(4);
+    document.write("Surface Area of CUBE: " + S2.SurfaceArea() + "\t   Volume of CUBE: " + S2.Volume() + "<br>");
+    document.write("Surface Area of CUBOID: " + S3.SurfaceArea() + "\t   Volume of CUBOID: " + S3.Volume() + "<br>");
+    document.write("Surface Area of CYLINDER: " + S4.SurfaceArea() + "\t   Volume of CYLINDER: " + S4.Volume() + "<br>");
+    document.write("Surface Area of SPHERE: " + S5.SurfaceArea() + "\t   Volume of SPHERE: " + S5.Volume() + "<br>");
+    document.write("Surface Area of CONE: " + S6.SurfaceArea() + "\t   Volume of CONE: " + S6.Volume() + "<br>");
+
+</script>
+</body>
+</html>

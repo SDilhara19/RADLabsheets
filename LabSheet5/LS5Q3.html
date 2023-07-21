@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Labsheet5</title>
+</head>
+<body>
+    <script>
+        class Book
+        {
+            constructor(name, price, author, publisher)
+            {
+                this.name = name;
+                this.price = price;
+                this.author = author;
+                this.publisher = publisher;
+            }
+
+            calculateDiscount() 
+            {
+                throw new Error('Method not implemented.');
+            }
+
+            displayDetails()
+            {
+                const discount = this.calculateDiscount();
+                console.log(`Name: ${this.name}`);
+                console.log(`Price: $${this.price.toFixed(2)}`);
+                console.log(`Author: ${this.author}`);
+                console.log(`Publisher: ${this.publisher}`);
+                console.log(`Discount: ${discount * 100}%`);
+                console.log(`Price after Discount: $${(this.price - this.price * discount).toFixed(2)}\n`);
+            }
+        }
+
+        class Novel extends Book 
+        {
+            constructor(name, price, author, publisher) 
+            {
+                super(name, price, author, publisher);
+            }
+
+            calculateDiscount() 
+            {
+                return 0.15; 
+            }
+        }
+
+        class ShortStory extends Book 
+        {
+            constructor(name, price, author, publisher) 
+            {
+                super(name, price, author, publisher);
+            }
+
+            calculateDiscount() 
+            {
+                return 0.15; 
+            }
+        }
+
+        class Biography extends Book
+        {
+            constructor(name, price, author, publisher) 
+            {
+                super(name, price, author, publisher);
+            }
+
+            calculateDiscount()
+            {
+                return 0.1; 
+            }
+        }
+
+        class EducationalBook extends Book 
+        {
+            constructor(name, price, author, publisher) 
+            {
+                super(name, price, author, publisher);
+            }
+
+            calculateDiscount() 
+            {
+                return 0.2; 
+            }
+        }
+
+        const novel = new Novel("The Great Gatsby", 15.99, "F. Scott Fitzgerald", "Scribner");
+        novel.displayDetails();
+
+        const shortStory = new ShortStory("The Tell-Tale Heart", 9.99, "Edgar Allan Poe", "Unknown");
+        shortStory.displayDetails();
+
+        const biography = new Biography("Steve Jobs", 20.49, "Walter Isaacson", "Simon & Schuster");
+        biography.displayDetails();
+
+        const educationalBook = new EducationalBook("Mathematics for Beginners", 29.95, "John Doe", "Education Publishers");
+        educationalBook.displayDetails();
+ 
+	
+    </script>
+</body>
+</html>

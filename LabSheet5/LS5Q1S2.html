@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Labsheet5</title>
+</head>
+<body>
+    <form>
+        <legend>Insert Student Details</legend>
+        <label>Student Index Number: </label>
+        <input type = "text" name = "Index" id = "index"><br><br>
+        <label>MCQ marks: </label>
+        <input type = "number" name = "mcq" id = "mcq"><br><br>
+        <label>Essay Marks: </label>
+        <input type = "number" name = "Essay" id = "essay"><br><br>
+        <input type = "submit" name="Submit" onclick="getValue()" value="Submit"><br><br>
+    </form>
+	<br><br>
+<script>
+			class Student
+			{
+				constructor(Index, MCQ, Essay)
+				{
+					this.indexNo = Index;
+					this.mcq = parseInt(MCQ);
+					this.essay= parseInt(Essay);
+				}
+
+                #CalTotal(n1, n2)
+				{
+				    return n1+n2
+				}
+
+				DisplayTotal()
+				{
+					document.write("Total Marks: " + this.#CalTotal(this.mcq, this.essay) + "<br>");
+				}
+            
+				#CalResult()
+				{
+				    if (this.#CalTotal(this.mcq, this.essay)<50)
+				    {
+				        return "Fail"
+				    }
+				    else
+				    {
+				        return "Pass"
+				    }
+				}
+
+				DisplayResult()
+				{
+					document.write("Result: " + this.#CalResult() + "<br>");
+				}
+
+                #CalGrade()
+				{
+                    let marks= this.#CalTotal(this.mcq, this.essay)
+					
+                    switch (true){
+                    case (marks>=75):
+                        return "A"
+                        break;
+					case (marks>=65):
+                        return "B"
+                        break;
+					case (marks>=55):
+                        return "C"
+                        break;
+					case (marks>=35):
+                        return "S"
+                        break;
+					case (marks>=0):
+                        return "W";
+                        break;
+					default:
+						return "Invalid Input";
+
+                    }
+				}
+
+
+				DisplayGrade()
+				{
+					document.write("Result: " + this.#CalGrade() + "<br>");
+				}
+
+            }
+			
+            function getValue()
+            {
+				let index = document.getElementById("index").value;
+				let mcq = document.getElementById("mcq").value;
+				let essay = document.getElementById("essay").value;
+
+				const stu1 = new Student(index, mcq, essay);
+				stu1.DisplayTotal();
+				stu1.DisplayResult();
+                stu1.DisplayGrade();
+
+			}
+
+
+
+		</script>
+</body>
+</html>

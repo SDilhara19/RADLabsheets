@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Labsheet5</title>
+</head>
+<body>
+    <script>
+        class Game 
+        {
+            constructor(name, theme, avatar) 
+            {
+                this.name = name;
+                this.theme = theme;
+                this.avatar = avatar;
+            }
+
+            displayWinningMessage() 
+            {
+                throw new Error('Method not implemented.');
+            }
+
+            displayLosingMessage() 
+            {
+                throw new Error('Method not implemented.');
+            }
+
+            startGame() 
+            {
+                console.log(`Starting ${this.name} game...`);
+                console.log(`Selected Theme: ${this.theme}`);
+                console.log(`Selected Avatar: ${this.avatar}`);
+            }
+
+            pauseGame() 
+            {
+                console.log(`Pausing ${this.name} game...`);
+            }
+
+            resumeGame()
+            {
+                console.log(`Resuming ${this.name} game...`);
+            }
+
+            cancelGame() 
+            {
+                console.log(`Cancelling ${this.name} game...`);
+            }
+        }
+
+        class CarGame extends Game 
+        {
+            constructor(theme, avatar) 
+            {
+                super("Car Game", theme, avatar);
+                this.winningScore = 100;
+            }
+
+            displayWinningMessage() 
+            {
+                console.log(`Congratulations! You've reached the winning score of ${this.winningScore}. You win the Car Game!`);
+            }
+
+            displayLosingMessage() 
+            {
+                console.log("You lost the Car Game. Better luck next time!");
+            }
+        }
+
+        class ShootingGame extends Game 
+        {
+            constructor(theme, avatar, selectedMission) 
+            {
+            super("Shooting Game", theme, avatar);
+            this.selectedMission = selectedMission;
+            }
+
+            displayWinningMessage() 
+            {
+                console.log(`Congratulations! You've completed the mission "${this.selectedMission}". You win the Shooting Game!`);
+            }
+
+            displayLosingMessage() 
+            {
+                console.log("You failed to complete the selected mission. You lost the Shooting Game!");
+            }
+        }
+
+        class PuzzleGame extends Game 
+        {
+            constructor(theme, avatar, setTimeInSeconds) 
+            {
+                super("Puzzle Game", theme, avatar);
+                this.setTimeInSeconds = setTimeInSeconds;
+            }
+
+            displayWinningMessage()
+            {
+                console.log(`Congratulations! You've rearranged the puzzle within the time. You win the Puzzle Game!`);
+            }
+
+            displayLosingMessage() 
+            {
+                console.log("You failed to rearrange the puzzle within the time. You lost the Puzzle Game!");
+            }
+        }
+
+        const carGame = new CarGame("City", "Sport Car");
+        carGame.startGame();
+        carGame.displayWinningMessage();
+
+        const shootingGame = new ShootingGame("Desert", "Soldier", "Mission 3");
+        shootingGame.startGame();
+        shootingGame.displayLosingMessage();
+
+        const puzzleGame = new PuzzleGame("Animals", "Lion", 60);
+        puzzleGame.startGame();
+        puzzleGame.displayWinningMessage();
+
+        
+	
+    </script>
+</body>
+</html>
